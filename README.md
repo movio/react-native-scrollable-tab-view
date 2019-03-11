@@ -1,4 +1,4 @@
-## EDIT Why this Movio fork
+## EDIT: Why this Movio fork
 
 - Numero is using `react-native-scrollable-tab-view` in their React-Native mobile apps. The latest version has a bug with android but the original repo is no longer active and the owner refuses to merge this fix: https://github.com/ptomasroos/react-native-scrollable-tab-view/pull/797. So here we forked the fix to keep it live for us.
 
