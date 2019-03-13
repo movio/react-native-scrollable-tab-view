@@ -128,6 +128,16 @@ const ScrollableTabView = createReactClass({
     return child.props.tabLabel + '_' + idx;
   },
 
+  _handleContentSizeChange() {
+    this._handleContentSizeChange = null;
+
+    if (Platform.OS === "android" && this.scrollView) {
+      const { currentPage, containerWidth } = this.state;
+      const offset = currentPage * this.state.containerWidth;
+      this.scrollView.scrollTo({x: offset, y: 0, animated: false });
+    }
+  },
+
   renderScrollableContent() {
     const scenes = this._composeScenes();
     return <ScrollView
@@ -149,6 +159,7 @@ const ScrollableTabView = createReactClass({
       directionalLockEnabled
       alwaysBounceVertical={false}
       keyboardDismissMode="on-drag"
+      onContentSizeChange={this._handleContentSizeChange}
       {...this.props.contentProps}
     >
       {scenes}
